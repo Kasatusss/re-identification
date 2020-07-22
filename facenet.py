@@ -21,9 +21,10 @@ print('Running on device: {}'.format(device))
 class VGGData(Dataset):
     def __init__(self, root_path):
         super().__init__()
-        
+
         self.files = [os.path.join(root_path, filename)
-                      for filename in sorted(os.listdir(root_path))]
+                      for filename in sorted(os.listdir(root_path), key=lambda x: int(x[:-4]))]
+        self.count = 0
 
     def __len__(self):
         return len(self.files)
@@ -95,6 +96,10 @@ def predict(path1, path2):
 
     images = [os.path.join(path2, name)
               for name in sorted(os.listdir(path2), key=lambda x: int(x[:-4]))]
+    # np.random.shuffle(images)
+    # images = images[:10000]
+    
+    
     results = []
     print(f'Processing images from {path2}')
     for image_path in tqdm(images):
@@ -123,10 +128,6 @@ def parse_args():
         default=None,
         type=str
     )
-    parser.add_argument(
-        '--print_results',
-        action='store_true'
-    )
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
@@ -151,6 +152,7 @@ if __name__ == "__main__":
     # Predictions
     results = predict(args.first_dir, args.second_dir)
 
+    # Write results
     if args.save_dir:
         with open(os.path.join(args.save_dir, 'results.csv'), 'w') as f:
             for res in results:
