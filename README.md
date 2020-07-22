@@ -11,4 +11,4 @@ python facenet.py --first_dir <your database dir> --second_dir <images to identi
 ```
 Predictions will be saved into `save_dir/results.csv` (`person image` line by line)
 
-Accuracy on 10k random test images from [VGGFace2](https://drive.google.com/drive/folders/10lBbk9vo3KOuH9P8PdwQMT2e6X2X7idO) is `0.83` (see `Demo.ipynb`).
+Accuracy on 10k random test images from [**VGGFace2**](https://drive.google.com/drive/folders/10lBbk9vo3KOuH9P8PdwQMT2e6X2X7idO) is `0.83` (see `Demo.ipynb`).
