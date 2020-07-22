@@ -6,7 +6,8 @@ Here is `facenet.py` script.
 
 For example:
 ```
-python facenet.py --first_dir <your database dir> --second_dir <images to identify> --save_dir <path to save results>
+python facenet.py --first_dir <your database dir> --second_dir <images to identify> \
+                  --save_dir <path to save results>
 ```
 Predictions will be saved into `save_dir/results.csv` (`person image` line by line)
 
